@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KF BURGUER - Cardápio Oficial</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Cabeçalho Principal -->
+    <header class="header">
+        <img src="logo.png" alt="KF Burguer Logo" class="logo-img">
+        <h1>KF BURGUER</h1>
+        <p>Delivery: (33) 99925-6982</p>
+    </header>
+
+    <main class="container">
+        <!-- Autenticação Inteligente -->
+        <section class="auth-section">
+            <h2>Bem-vindo à KF BURGUER!</h2>
+            <p>Faça login com sua conta Google para salvar seu endereço e acompanhar o histórico de pedidos:</p>
+            <button class="btn-google">
+                <img src="https://gstatic.com" alt="Google">
+                Entrar com o Google
+            </button>
+        </section>
+
+        <!-- CATEGORIA: COMBOS -->
+        <section class="categoria-section">
+            <h2>🔥 KF Combos</h2>
+            <div class="produtos-grid">
+                <div class="produto-card bg-casal">
+                    <div class="produto-overlay">
+                        <h3>Combo Casal</h3>
+                        <p>2 X-Burguers + Porção de Batata</p>
+                        <span class="preco">R$ 75,00</span>
+                        <button class="btn-add">Adicionar</button>
+                    </div>
+                </div>
+                <div class="produto-card bg-triplo">
+                    <div class="produto-overlay">
+                        <h3>Combo Triplo</h3>
+                        <p>3 X-Burguers + Porção de Batata</p>
+                        <span class="preco">R$ 95,00</span>
+                        <button class="btn-add">Adicionar</button>
+                    </div>
+                </div>
+                <div class="produto-card bg-familia">
+                    <div class="produto-overlay">
+                        <h3>Combo Família</h3>
+                        <p>4 X-Burguers + Porção de Batata</p>
+                        <span class="preco">R$ 115,00</span>
+                        <button class="btn-add">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORIA: HAMBÚRGUERES ARTESANAIS -->
+        <section class="categoria-section">
+            <h2>🍔 KF Hambúrgueres</h2>
+            <div class="produtos-grid">
+                <div class="produto-card bg-chef">
+                    <div class="produto-overlay">
+                        <h3>Chef KF</h3>
+                        <p>Pão brioche, blend 150g (Casa de Carne Silva), cheddar, bacon, picles, alface e tomate.</p>
+                        <span class="preco">R$ 35,00</span>
+                        <button class="btn-add">Adicionar</button>
+                    </div>
+                </div>
+                <div class="produto-card bg-triplo-smash">
+                    <div class="produto-overlay">
+                        <h3>Triplo-Smash</h3>
+                        <p>Pão brioche 60g, 3 smash de 80g, cheddar, maionese da casa, bacon, alface e tomate.</p>
+                        <span class="preco">R$ 40,00</span>
+                        <button class="btn-add">Adicionar</button>
+                    </div>
+                </div>
+                <div class="produto-card sem-foto">
+                    <div class="produto-overlay">
+                        <h3>X-Burguer</h3>
+                        <p>Pão brioche, blend 120g, cheddar e maionese da casa.</p>
+                        <span class="preco">R$ 25,00</span>
+                        <button class="btn-add">Adicionar</button>
+                    </div>
+                </div>
+                <div class="produto-card sem-foto">
+                    <div class="produto-overlay">
+                        <h3>X-Bacon</h3>
+                        <p>Pão brioche, blend 120g, cheddar, bacon e maionese da casa.</p>
+                        <span class="preco">R$ 28,00</span>
+                        <button class="btn-add">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORIA: PORÇÕES -->
+        <section class="categoria-section">
+            <h2>🍟 Porções</h2>
+            <div class="produtos-grid">
+                <div class="produto-card bg-batata">
+                    <div class="produto-overlay">
+                        <h3>Porção de Batata Especial</h3>
+                        <p>Batata frita, bacon em cubos e molho de sua preferência (500g).</p>
+                        <span class="preco">R$ 35,00</span>
+                        <button class="btn-add">Adicionar</button>
+                    </div>
+                </div>
+                <div class="produto-card sem-foto">
+                    <div class="produto-overlay">
+                        <h3>Batata Frita Tradicional</h3>
+                        <p>Porção individual de batata frita super crocante (120g).</p>
+                        <span class="preco">R$ 10,00</span>
+                        <button class="btn-add">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

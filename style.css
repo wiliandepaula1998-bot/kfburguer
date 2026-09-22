@@ -1,0 +1,483 @@
+
+/* Configurações Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #0f0f0f;
+    color: #ffffff;
+}
+
+.header {
+    background-color: #f2c811;
+    text-align: center;
+    padding: 30px 20px;
+    color: #111;
+    border-bottom: 5px solid #1a1a1a;
+}
+
+.logo-img {
+    max-width: 120px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.auth-section {
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    text-align: center;
+    margin-bottom: 40px;
+    border-left: 6px solid #f2c811;
+}
+
+.auth-section h2 { margin-bottom: 10px; color: #fff; }
+.auth-section p { color: #aaa; margin-bottom: 20px; }
+
+.btn-google {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: white;
+    color: #333;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.categoria-section { margin-bottom: 40px; }
+.categoria-section h2 {
+    font-size: 1.6rem;
+    color: #f2c811;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #f2c811;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.produtos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+/* CARDS PREMIUM COM IMAGEM DE FUNDO INTEIRA */
+.produto-card {
+    position: relative;
+    height: 250px;
+    border-radius: 12px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    transition: transform 0.3s, border-color 0.3s;
+    border: 2px solid #222;
+}
+
+.produto-card:hover {
+    transform: scale(1.02);
+    border-color: #f2c811;
+}
+
+/* LINKS DAS IMAGENS DO CARDÁPIO COMPLETO */
+.bg-casal { background-image: url('combo-casal.png'); }
+.bg-triplo { background-image: url('combo-triplo.png'); }
+.bg-familia { background-image: url('combo-familia.png'); }
+.bg-x-burguer { background-image: url('x-burguer.png'); }
+.bg-x-bacon { background-image: url('x-bacon.png'); }
+.bg-ultra-smash { background-image: url('ultra-smash.png'); }
+.bg-duplo-bacon { background-image: url('duplo-bacon.png'); }
+.bg-chef { background-image: url('chef-kf.png'); }
+.bg-cheddar-bacon { background-image: url('cheddar-bacon.png'); }
+.bg-kfarofa { background-image: url('kfarofa.png'); }
+.bg-triplo-smash { background-image: url('triplo-smash.png'); }
+.bg-batata-tradicional { background-image: url('batata-tradicional.png'); }
+.bg-batata { background-image: url('batata-especial.png'); }
+.bg-refris-lata { background-image: url('refris-lata.png'); }
+.bg-refris-2l { background-image: url('refris-2l.png'); }
+
+.produto-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.92) 55%, rgba(0,0,0,0.3) 100%);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.produto-overlay h3 { font-size: 1.4rem; color: #f2c811; margin-bottom: 5px; font-weight: 700; text-shadow: 2px 2px 4px #000; }
+.produto-overlay p { color: #ddd; font-size: 0.9rem; margin-bottom: 15px; max-width: 70%; line-height: 1.4; text-shadow: 1px 1px 3px #000; }
+.preco { font-weight: 800; color: #fff; font-size: 1.4rem; text-shadow: 2px 2px 4px #000; }
+
+.btn-add {
+    position: absolute; right: 20px; bottom: 20px;
+    background-color: #f2c811; color: #111; border: none;
+    padding: 10px 18px; border-radius: 6px; font-weight: 700;
+    cursor: pointer; text-transform: uppercase; font-size: 0.85rem;
+}
+
+/* ESTILO PARA MOLHOS E ADICIONAIS (SEÇÃO DUPLA) */
+.complementos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.complementos-coluna h2 {
+    font-size: 1.3rem;
+    color: #f2c811;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #f2c811;
+    padding-bottom: 5px;
+}
+
+.lista-simples {
+    background: #1a1a1a;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.item-simples {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 10px;
+    border-bottom: 1px solid #2a2a2a;
+    font-weight: 600;
+}
+
+.item-simples:last-child { border-bottom: none; }
+
+.btn-add-mini {
+    background-color: #333;
+    color: #f2c811;
+    border: 1px solid #f2c811;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+.btn-add-mini:hover { background-color: #f2c811; color: #111; }
+
+/* MODAL / POP-UP */
+.modal {
+    display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.75); backdrop-filter: blur(5px); align-items: center; justify-content: center;
+}
+.modal-conteudo { background-color: #1a1a1a; width: 90%; max-width: 500px; border-radius: 16px; overflow: hidden; position: relative; border: 2px solid #f2c811; }
+.fechar-modal { position: absolute; right: 15px; top: 10px; color: #fff; font-size: 30px; font-weight: bold; cursor: pointer; z-index: 10; }
+.modal-img-fundo { width: 100%; height: 250px; background-size: cover; background-position: center; border-bottom: 3px solid #f2c811; }
+.modal-info { padding: 25px; }
+.modal-info h3 { font-size: 1.8rem; color: #f2c811; margin-bottom: 10px; }
+.modal-info p { color: #ccc; font-size: 1rem; line-height: 1.5; margin-bottom: 25px; }
+.modal-rodape { display: flex; justify-content: space-between; align-items: center; }
+.btn-confirmar { background-color: #f2c811; color: #111; border: none; padding: 12px 25px; border-radius: 8px; font-weight: 700; cursor: pointer; text-transform: uppercase; }
+
+/* ============================================================
+   ESTILO ATUALIZADO E FORÇADO PARA A TELA FLUTUANTE (MODAL)
+   ============================================================ */
+.modal {
+    display: none; /* Começa escondida por padrão */
+    position: fixed;
+    z-index: 99999; /* Garante que fica por cima de absolutamente tudo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Fundo preto transparente */
+    backdrop-filter: blur(8px); /* Efeito de desfoque no fundo do site */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Caixa interna que centraliza as informações do lanche */
+.modal-conteudo {
+    background-color: #1a1a1a;
+    width: 90%;
+    max-width: 450px;
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid #f2c811; /* Borda amarela KF Burguer */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+}
+
+/* Botão de fechar (X) no topo direito */
+.fechar-modal {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    color: #fff;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 100;
+    text-shadow: 2px 2px 4px #000;
+}
+
+.fechar-modal:hover {
+    color: #f2c811;
+}
+
+/* Espaço reservado para a Imagem do Lanche selecionado dentro da tela */
+.modal-img-fundo {
+    width: 100%;
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-bottom: 3px solid #f2c811;
+}
+
+/* Textos dentro da tela flutuante */
+.modal-info {
+    padding: 25px;
+}
+
+.modal-info h3 {
+    font-size: 1.6rem;
+    color: #f2c811;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.modal-info p {
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+/* Rodapé alinhando preço e botão de confirmar lado a lado */
+.modal-rodape {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Botão de Confirmar */
+.btn-confirmar {
+    background-color: #f2c811;
+    color: #111;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background 0.2s;
+}
+
+.btn-confirmar:hover {
+    background-color: #ffffff;
+}
+
+/* ============================================================
+   FORÇAR ABERTURA DA TELA DE COMPLEMENTO DE CADASTRO
+   ============================================================ */
+#modal-cadastro {
+    display: none; /* Começa escondido */
+    position: fixed;
+    z-index: 99999; /* Fica na frente de tudo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Escurece o fundo do site */
+    backdrop-filter: blur(8px); /* Desfoca os itens atrás */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Centraliza os inputs na tela e deixa no padrão escuro/amarelo */
+#modal-cadastro .modal-conteudo {
+    background-color: #1a1a1a !important;
+    border: 2px solid #f2c811 !important;
+    width: 90%;
+    max-width: 450px;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+#modal-cadastro input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background-color: #222;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+}
+
+#modal-cadastro input:focus {
+    border-color: #f2c811; /* Acende a borda em amarelo ao clicar */
+}
+/* ============================================================
+   ESTILOS DO PERFIL DO USUÁRIO LOGADO
+   ============================================================ */
+.usuario-logado-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    background: #252525;
+    border-radius: 8px;
+    border: 1px solid #333;
+    text-align: left;
+}
+
+.usuario-info-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+/* Ícone/Bolinha da foto de perfil clicável */
+.avatar-perfil {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid #f2c811;
+    cursor: pointer;
+    background-image: url('https://googleusercontent.com'); /* Foto padrão do Google */
+    background-size: cover;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.avatar-perfil:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #f2c811;
+}
+
+/* Garante que os campos de input do perfil funcionem no modal */
+#modal-perfil input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background-color: #222;
+    color: #fff;
+    font-size: 1rem;
+    outline: none;
+}
+#modal-perfil input:focus {
+    border-color: #f2c811;
+}
+/* ============================================================
+   ESTILO REVISADO DOS MODAIS (CORRIGE A EXIBIÇÃO INDEVIDA)
+   ============================================================ */
+.modal {
+    display: none; /* ESCONDE AS JANELAS POR PADRÃO */
+    position: fixed;
+    z-index: 99999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Escurece o site ao fundo */
+    backdrop-filter: blur(8px); /* Desfoca o fundo */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Caixa interna dos Pop-ups */
+.modal-conteudo {
+    background-color: #1a1a1a !important; /* Força o fundo grafite escuro */
+    border: 2px solid #f2c811 !important; /* Força a borda amarela KF Burguer */
+    width: 95%;
+    max-width: 450px;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    position: relative;
+    color: #ffffff;
+}
+
+.modal-conteudo h2 {
+    color: #f2c811;
+    margin-bottom: 10px;
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.modal-conteudo p {
+    color: #aaa;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+/* Agrupamento das caixas de digitação */
+.modal-inputs-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.modal-inputs-group label {
+    color: #f2c811;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-bottom: -4px;
+    text-transform: uppercase;
+}
+
+/* Customização dos Inputs dentro dos modais */
+.modal-conteudo input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #333 !important;
+    background-color: #222 !important;
+    color: #fff !important;
+    font-size: 1rem;
+    outline: none;
+}
+
+.modal-conteudo input:focus {
+    border-color: #f2c811 !important;
+}
+
+/* Botão de Fechar (X) */
+.fechar-modal {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    color: #fff;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.fechar-modal:hover { color: #f2c811; }
+/* CORREÇÃO DO CLIQUE NO BOTÃO DO GOOGLE */
+.btn-google * {
+    pointer-events: none; /* Diz ao navegador para ignorar o clique na imagem interna e focar apenas no botão */
+}
