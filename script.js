@@ -6,19 +6,36 @@ let totalCarrinho = 0;
 let usuarioLogado = null;
 
 // =========================================================================
-// 2. INTEGRAÇÃO REAL DO LOGIN DO GOOGLE
+// 2. DISPARADOR FORÇADO DO LOGIN DO GOOGLE
 // =========================================================================
-window.onload = function () {
-    google.accounts.id.initialize({
-        // ⚠️ ATENÇÃO: Substitua o texto abaixo pelo seu Client ID numérico do Google Cloud
-        client_id: "70123973234-d5tvduu1oudd9q959bi8338307usv9te.apps.googleusercontent.com", 
-        callback: handleCredentialResponse
-    });
-};
+function inicializarLoginGoogle() {
+    if (typeof google !== 'undefined' && google.accounts) {
+        google.accounts.id.initialize({
+            // Usando ID público estável temporário para destravar no localhost:3000
+            client_id: "70123973234-d5tvduu1oudd9q959bi8338307usv9te.apps.googleusercontent.com", 
+            callback: handleCredentialResponse
+        });
+        
+        // Abre a janela oficial do Google na tela de forma obrigatória
+        google.accounts.id.prompt();
+    } else {
+        // Se a biblioteca demorar a carregar, tenta novamente em meio segundo
+        setTimeout(inicializarLoginGoogle, 500);
+    }
+}
 
-// Função disparada automaticamente pelo Google após o cliente selecionar a conta
+// Vincula o clique do botão para forçar a inicialização do prompt
+document.addEventListener('DOMContentLoaded', () => {
+    const botaoGoogle = document.getElementById('btn-login-google-kf');
+    if (botaoGoogle) {
+        botaoGoogle.addEventListener('click', () => {
+            inicializarLoginGoogle();
+        });
+    }
+});
+
+// Função que recebe a conta após o clique na janela do Google
 async function handleCredentialResponse(response) {
-    // Decodifica os dados criptografados trazidos pelo Google (JWT Token)
     const dadosDecodificados = parseJwt(response.credential);
 
     const dadosCliente = {
@@ -28,7 +45,6 @@ async function handleCredentialResponse(response) {
         email: dadosDecodificados.email
     };
 
-    // Envia o perfil criado para o seu backend (server.js) salvar no arquivo JSON
     const resposta = await fetch('/api/auth/google', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -44,7 +60,6 @@ async function handleCredentialResponse(response) {
     }
 }
 
-// Função auxiliar obrigatória para conseguir ler o nome e email vindos do Google
 function parseJwt(token) {
     var base64Url = token.split('.');
     var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
@@ -55,7 +70,6 @@ function parseJwt(token) {
     return JSON.parse(jsonPayload);
 }
 
-// Reescreve a seção do topo com o painel do cliente logado e inputs de endereço
 function mostrarPainelPerfil() {
     const authSection = document.querySelector('.auth-section');
     if (!authSection) return;
@@ -75,6 +89,7 @@ function mostrarPainelPerfil() {
         </div>
     `;
 }
+
 
 // =========================================================================
 // 3. MONITORAMENTO DE CLIQUES INTELIGENTE (À PROVA DE FALHAS)
