@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script src="https://google.com" async defer></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KF BURGUER - Cardápio Oficial</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+    <!-- Interface Visual do Carrinho de Compras -->
+    <div id="carrinho-flutuante" style="display: none; position: fixed; bottom: 20px; right: 20px; background: #1a1a1a; border: 2px solid #f3be22; padding: 20px; border-radius: 12px; width: 320px; z-index: 1000; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+        <h3 style="color: #f3be22; margin-bottom: 10px;">🛒 Seu Carrinho</h3>
+        <ul id="carrinho-itens" style="list-style: none; max-height: 150px; overflow-y: auto; margin-bottom: 15px; font-size: 0.9rem;"></ul>
+        <p style="font-weight: bold; margin-bottom: 15px;">Total: R$ <span id="carrinho-total">0,00</span></p>
+        
+        <label for="metodo-pagamento" style="display:block; margin-bottom:5px; font-size:0.85rem;">Forma de Pagamento:</label>
+        <select id="metodo-pagamento" style="width: 100%; padding: 8px; margin-bottom: 15px; background: #222; color: #fff; border: 1px solid #333;">
+            <option value="Pix">Pix (Chave na tela seguinte)</option>
+            <option value="Dinheiro">Dinheiro (Paga na Entrega)</option>
+        </select>
+        
+        <button onclick="finalizarCompra()" style="width: 100%; background: #f3be22; color: #000; font-weight: bold; border: none; padding: 10px; border-radius: 6px; cursor: pointer;">Finalizar Pedido</button>
+    </div>
+
+    <!-- Vincula o código de controle JavaScript -->
+    <script src="script.js"></script>
+
+<body>
+
+    <!-- Cabeçalho Principal -->
+    <header class="header">
+        <img src="logo.png" alt="KF Burguer Logo" class="logo-img">
+        <h1>KF BURGUER</h1>
+        <p>Delivery: (33) 99925-6982</p>
+    </header>
+
+    <main class="container">
+        <!-- Autenticação Inteligente -->
+        <section class="auth-section">
+            <h2>Bem-vindo à KF BURGUER!</h2>
+            <p>Faça login com sua conta Google para salvar seu endereço e acompanhar o histórico de pedidos:</p>
+            <button class="btn-google">
+                <img src="https://gstatic.com" alt="Google">
+                Entrar com o Google
+            </button>
+        </section>
+
+        <!-- CATEGORIA: COMBOS -->
+        <section class="categoria-section">
+            <h2>🔥 KF Combos</h2>
+            <div class="produtos-grid">
+                <div class="produto-card bg-casal">
+                    <div class="produto-overlay">
+                        <h3>Combo Casal</h3>
+                        <p>2 X-Burguers + Porção de Batata</p>
+                        <span class="preco">R$ 75,00</span>
+                        <button class="btn-add">Adicionar</button>
+                    </div>
+                </div>
+                <div class="produto-card bg-triplo">
+                    <div class="produto-overlay">
+                        <h3>Combo Triplo</h3>
+                        <p>3 X-Burguers + Porção de Batata</p>
+                        <span class="preco">R$ 95,00</span>
+                        <button class="btn-add">Adicionar</button>
+                    </div>
+                </div>
+                <div class="produto-card bg-familia">
+                    <div class="produto-overlay">
+                        <h3>Combo Família</h3>
+                        <p>4 X-Burguers + Porção de Batata</p>
+                        <span class="preco">R$ 115,00</span>
+                        <button class="btn-add">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORIA: HAMBÚRGUERES ARTESANAIS -->
+        <section class="categoria-section">
+            <h2>🍔 KF Hambúrgueres</h2>
+            <div class="produtos-grid">
+                <div class="produto-card bg-chef">
+                    <div class="produto-overlay">
+                        <h3>Chef KF</h3>
+                        <p>Pão brioche, blend 150g (Casa de Carne Silva), cheddar, bacon, picles, alface e tomate.</p>
+                        <span class="preco">R$ 35,00</span>
+                        <button class="btn-add">Adicionar</button>
+                    </div>
+                </div>
+                <div class="produto-card bg-triplo-smash">
+                    <div class="produto-overlay">
+                        <h3>Triplo-Smash</h3>
+                        <p>Pão brioche 60g, 3 smash de 80g, cheddar, maionese da casa, bacon, alface e tomate.</p>
+                        <span class="preco">R$ 40,00</span>
+                        <button class="btn-add">Adicionar</button>
+                    </div>
+                </div>
+                <div class="produto-card sem-foto">
+                    <div class="produto-overlay">
+                        <h3>X-Burguer</h3>
+                        <p>Pão brioche, blend 120g, cheddar e maionese da casa.</p>
+                        <span class="preco">R$ 25,00</span>
+                        <button class="btn-add">Adicionar</button>
+                    </div>
+                </div>
+                <div class="produto-card sem-foto">
+                    <div class="produto-overlay">
+                        <h3>X-Bacon</h3>
+                        <p>Pão brioche, blend 120g, cheddar, bacon e maionese da casa.</p>
+                        <span class="preco">R$ 28,00</span>
+                        <button class="btn-add">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORIA: PORÇÕES -->
+        <section class="categoria-section">
+            <h2>🍟 Porções</h2>
+            <div class="produtos-grid">
+                <div class="produto-card bg-batata">
+                    <div class="produto-overlay">
+                        <h3>Porção de Batata Especial</h3>
+                        <p>Batata frita, bacon em cubos e molho de sua preferência (500g).</p>
+                        <span class="preco">R$ 35,00</span>
+                        <button class="btn-add">Adicionar</button>
+                    </div>
+                </div>
+                <div class="produto-card sem-foto">
+                    <div class="produto-overlay">
+                        <h3>Batata Frita Tradicional</h3>
+                        <p>Porção individual de batata frita super crocante (120g).</p>
+                        <span class="preco">R$ 10,00</span>
+                        <button class="btn-add">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <body>
+
+
+    let carrinho = [];
+let totalCarrinho = 0;
+let usuarioLogado = null;
+
+// --- FUNÇÃO DE LOGIN GOOGLE (Simulação de clique) ---
+document.querySelector('.btn-google').addEventListener('click', async () => {
+    // Aqui simulamos os dados que a API oficial do Google retorna após o clique
+    const dadosGoogleSimulados = {
+        googleId: 'google_123456789',
+        nome: 'Wilian',
+        sobrenome: 'Silva',
+        email: 'wilian@email.com'
+    };
+
+    const resposta = await fetch('/api/auth/google', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dadosGoogleSimulados)
+    });
+
+    const resultado = await resposta.json();
+    
+    if (resultado.login) {
+        usuarioLogado = resultado.usuario;
+        alert(`Olá ${usuarioLogado.nome}! Seu perfil único da KF Burguer foi ativado.`);
+        mostrarPainelPerfil();
+    }
+});
+
+// Exibe os campos para preencher endereço e CPF se faltarem
+function mostrarPainelPerfil() {
+    const authSection = document.querySelector('.auth-section');
+    authSection.innerHTML = `
+        <div style="background: #222; padding: 15px; border-radius: 8px; border: 1px solid #f3be22;">
+            <h3>Perfil de ${usuarioLogado.nome} ${usuarioLogado.sobrenome}</h3>
+            <p>Complete seus dados para entrega:</p>
+            <input type="text" id="end-entrega" placeholder="Endereço Completo com Ponto de Referência" value="${usuarioLogado.enderecoCompleto || ''}" style="width:100%; margin: 5px 0; padding: 8px;">
+            <input type="text" id="cpf-cliente" placeholder="CPF (Opcional)" value="${usuarioLogado.cpf || ''}" style="width:100%; margin: 5px 0; padding: 8px;">
+            <button id="btn-salvar-perfil" style="background:#f3be22; color:#000; padding:8px 15px; border:none; cursor:pointer; font-weight:bold; margin-top:5px;">Salvar Dados</button>
+        </div>
+    `;
+
+    document.getElementById('btn-salvar-perfil').addEventListener('click', async () => {
+        const enderecoCompleto = document.getElementById('end-entrega').value;
+        const cpf = document.getElementById('cpf-cliente').value;
+
+        await fetch('/api/usuario/perfil', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ enderecoCompleto, cpf })
+        });
+        alert('Endereço e dados de perfil atualizados com sucesso!');
+    });
+}
+
+// --- LÓGICA DO CARRINHO ---
+// Mapeia todos os botões de Adicionar do seu HTML
+document.querySelectorAll('.btn-add, .btn-add-mini').forEach(botao => {
+    botao.addEventListener('click', (e) => {
+        const elementoProduto = e.target.closest('.produto-overlay, .item-simples');
+        
+        let nomeProduto = elementoProduto.querySelector('h3') ? elementoProduto.querySelector('h3').innerText : elementoProduto.querySelector('span').innerText;
+        let precoTexto = elementoProduto.querySelector('.preco') ? elementoProduto.querySelector('.preco').innerText : "R\$ 2,00"; // Padrão dos molhos
+        
+        let preco = parseFloat(precoTexto.replace('R\$', '').replace(',', '.').trim());
+
+        carrinho.push({ nome: nomeProduto, preco: preco });
+        totalCarrinho += preco;
+
+        atualizarInterfaceCarrinho();
+    });
+});
+
+function atualizarInterfaceCarrinho() {
+    const containerCarrinho = document.getElementById('carrinho-flutuante');
+    containerCarrinho.style.display = 'block';
+    
+    const listaItens = document.getElementById('carrinho-itens');
+    listaItens.innerHTML = carrinho.map(item => `<li>${item.nome} - R$ ${item.preco.toFixed(2).replace('.', ',')}</li>`).join('');
+    
+    document.getElementById('carrinho-total').innerText = totalCarrinho.toFixed(2).replace('.', ',');
+}
+
+// Finalizar Compra com Pagamento
+async function finalizarCompra() {
+    if (!usuarioLogado) {
+        alert('Por favor, faça login com o Google antes de finalizar o pedido!');
+        return;
+    }
+
+    const metodoPagamento = document.getElementById('metodo-pagamento').value;
+
+    const resposta = await fetch('/api/pedidos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            itens: carrinho,
+            total: totalCarrinho,
+            metodoPagamento: metodoPagamento
+        })
+    });
+
+    const resultado = await resposta.json();
+    if (resultado.sucesso) {
+        alert(`Pedido Confirmado!\nForma de pagamento: ${metodoPagamento}\nEntregaremos em: ${usuarioLogado.enderecoCompleto}`);
+        carrinho = [];
+        totalCarrinho = 0;
+        document.getElementById('carrinho-flutuante').style.display = 'none';
+    }
+}
+
+</html>

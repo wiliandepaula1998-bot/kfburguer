@@ -7,16 +7,59 @@ document.addEventListener('click', function(evento) {
     const alvo = evento.target;
 
     // 1. CLIQUE NO BOTÃO DO GOOGLE LOGIN
-    if (alvo.classList.contains('btn-google') || alvo.closest('.btn-google')) {
-        alert("🌐 Conectando à API do Google...");
-        
-        const modalCadastro = document.getElementById('modal-cadastro');
-        if (modalCadastro) {
-            modalCadastro.style.display = 'flex'; // Abre a janela na tela
-        } else {
-            console.log("Erro: Não encontrei a caixinha #modal-cadastro no HTML.");
-        }
+    if (alvo.classList.contains('btn-google') || alvo.closest('.btn-google')) // --- CONFIGURAÇÃO REAL DO LOGIN DO GOOGLE ---
+window.onload = function () {
+    // Inicializa o componente do Google
+    google.accounts.id.initialize({
+        client_id: "70123973234-d5tvduu1oudd9q959bi8338307usv9te.apps.googleusercontent.com", // Substitua pela sua chave depois
+        callback: handleCredentialResponse
+    });
+
+    // Vincula a janela de login oficial ao seu botão do HTML
+    document.querySelector('.btn-google').addEventListener('click', () => {
+        google.accounts.id.prompt(); // Faz abrir a caixinha oficial de login do Google na tela!
+    });
+};
+
+// Função que recebe os dados reais da conta após o cliente fazer o login na janela
+async function handleCredentialResponse(response) {
+    // Decodifica os dados que o Google enviou (JWT Token)
+    const dadosDecodificados = parseJwt(response.credential);
+
+    const dadosCliente = {
+        googleId: dadosDecodificados.sub,
+        nome: dadosDecodificados.given_name,
+        sobrenome: dadosDecodificados.family_name,
+        email: dadosDecodificados.email
+    };
+
+    // Envia os dados para salvar no seu server.js
+    const resposta = await fetch('/api/auth/google', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dadosCliente)
+    });
+
+    const resultado = await resposta.json();
+    
+    if (resultado.login) {
+        usuarioLogado = resultado.usuario;
+        alert(`Olá ${usuarioLogado.nome}! Seu perfil único da KF Burguer foi carregado.`);
+        mostrarPainelPerfil();
     }
+}
+
+// Função auxiliar para conseguir ler as informações de nome e email vindas do Google
+function parseJwt(token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
+}
+
 
     // 2. CLIQUE NO BOTÃO DE SALVAR O CADASTRO (CLIENTE NOVO)
     if (alvo.id === 'btn-salvar-cadastro') {
